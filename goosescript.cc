@@ -16,15 +16,12 @@ int main(int argc, char* argv[]) {
   ofile.open(newfile.c_str());
   int state = 0;
   int length = 0;
-  while (ifile >> c) {
+  while (true) {
+    c = ifile.get();
+    if (ifile.eof()) {
+      break;
+    }
     if (('a' <= c && c <= 'z' && c != 's' && c != 'h') || ('A' <= c && c <= 'Z' && c != 'S' && c != 'H')) {
-      cout << c << endl;
-      cout << ('a' <= c <= 'z') << endl;
-      cout << (c != 's') << endl;
-      cout << (c != 'h') << endl;
-      cout << ('A' <= c <= 'Z') << endl;
-      cout << (c != 'S') << endl;
-      cout << (c != 'H') << endl;
       cerr << "Error 1: only hissing!" << endl;
       return 1;
     } 
@@ -53,9 +50,10 @@ int main(int argc, char* argv[]) {
       } else if (c == 'h') {
         state = 1;
         length = -1;
-      } else cout << c << endl;
+      } else ofile << c;
     }
   }
+
   ifile.close();
   ofile.close();
 }
