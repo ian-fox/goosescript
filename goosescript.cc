@@ -11,6 +11,10 @@ int main(int argc, char* argv[]) {
   ifstream ifile;
   ofstream ofile;
   ifile.open(argv[1]);
+  if (!ifile.is_open()) {
+    cerr << "Could not read input file" << endl;
+    return 1;
+  }
   char c;
   string newfile = string(argv[1]).substr(0, string(argv[1]).length() - 3) + ".cc";
   ofile.open(newfile.c_str());
