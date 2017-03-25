@@ -22,19 +22,19 @@ int main(int argc, char* argv[]) {
       break;
     }
     if (('a' <= c && c <= 'z' && c != 's' && c != 'h') || ('A' <= c && c <= 'Z' && c != 'S' && c != 'H')) {
-      cerr << "Error 1: only hissing!" << endl;
+      cerr << "Error: only hissing!" << endl;
       return 1;
     } 
     if (state == 1 && c != 's') {
       if (length == -1) {
-        cerr << "Error 2: only hissing!" << endl;
+        cerr << "Error: only hissing!" << endl;
         return 1;
       }
       ofile << (char)('a' + length);
       state = 0;
     } else if (state == 2 && c != 'S') {
       if (length == -1) {
-        cerr << "Error 3: only hissing!" << endl;
+        cerr << "Error: only hissing!" << endl;
         return 1;
       }
       ofile << (char)('A' + length);
